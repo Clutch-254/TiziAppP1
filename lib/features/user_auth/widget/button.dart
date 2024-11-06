@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 class ThisButton extends StatelessWidget {
   final VoidCallback onTab;
   final String text;
-  const ThisButton({super.key, required this.onTab, required this.text});
+  const ThisButton({super.key,
+  required this.onTab,
+  required this.text
+  });
 
   @override
   Widget build(BuildContext context) {
