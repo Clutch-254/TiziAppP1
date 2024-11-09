@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tiziapp_p1/features/user_auth/authentication.dart';
+import 'package:tiziapp_p1/features/user_auth/presentation/pages/home_page.dart';
 import 'package:tiziapp_p1/features/user_auth/presentation/pages/login_page.dart';
+import 'package:tiziapp_p1/features/user_auth/widget/snack_bar.dart';
 
 import '../../widget/button.dart';
 import '../../widget/text_field.dart';
@@ -15,6 +18,33 @@ class _SignupPageState extends State<SignupPage> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passController = TextEditingController();
+  bool isLoading = false;
+  
+  void signUpUser() async {
+    String res = await AuthenServ().signUpUser(
+      email: emailController.text,
+      password: passController.text,
+      name: nameController.text,
+    );
+    if(res == "Success!"){ 
+      setState(() {
+        isLoading = true;
+      });
+      //Navigates user to utility screen
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) =>const HomePage(),
+        ),
+      );
+    }else { 
+      setState(() {
+        isLoading = false;
+      });
+      //Shows error if incorrect format is used
+      showSnackBar(context, res);
+    }
+  }
+ 
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -43,11 +73,12 @@ class _SignupPageState extends State<SignupPage> {
               TextFieldIn(
                 textEditingController: passController,
                 hintText: "Enter your password",
+                isPass: true,
                 icon: Icons.lock,
               ),
-              ThisButton(onTab: (){
-
-              }, text: "Sign Up"),
+              ThisButton(onTab: signUpUser, 
+              text: "Sign Up"
+              ),
               SizedBox(height: height/15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
