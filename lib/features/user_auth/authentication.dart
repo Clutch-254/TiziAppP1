@@ -54,4 +54,8 @@ class AuthenServ {
   }
   return res;
  }
+ //For log out sequence
+ Future<void> signOut() async {
+  await _auth.signOut();
+ }
 }

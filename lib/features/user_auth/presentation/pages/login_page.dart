@@ -3,6 +3,10 @@ import 'package:tiziapp_p1/features/user_auth/presentation/pages/signup_page.dar
 import 'package:tiziapp_p1/features/user_auth/widget/button.dart';
 import 'package:tiziapp_p1/features/user_auth/widget/text_field.dart';
 
+import '../../authentication.dart';
+import '../../widget/snack_bar.dart';
+import 'home_page.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -12,7 +16,42 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController passController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  bool isLoading = false;
+
+   void despose() {
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+  }
+
+  void loginUsers() async {
+    String res = await AuthenServ().loginUser(
+      email: emailController.text,
+      password: passwordController.text,
+    );
+    //if the log in process is successful user has accessed their account
+    if(res == "Success!"){ 
+      setState(() {
+        isLoading = true;
+      });
+      //Navigates user to utility screen
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) =>const HomePage(),
+        ),
+      );
+    }else { 
+      setState(() {
+        isLoading = false;
+      });
+      //Shows error if incorrect format is used
+      showSnackBar(context, res);
+    }
+  }
+ 
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -34,7 +73,8 @@ class _LoginPageState extends State<LoginPage> {
                 icon: Icons.email
               ),
               TextFieldIn(
-                textEditingController: passController,
+                isPass: true,
+                textEditingController: passwordController,
                 hintText: "Enter your password",
                 icon: Icons.lock,
               ),
@@ -52,7 +92,9 @@ class _LoginPageState extends State<LoginPage> {
                  ),
                 ),
               ),
-              ThisButton(onTab: (){}, text: "Log In"),
+              ThisButton(onTab: loginUsers,
+               text: "Log In",
+              ),
               SizedBox(height: height/15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

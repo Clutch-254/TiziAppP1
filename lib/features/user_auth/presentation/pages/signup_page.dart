@@ -17,13 +17,22 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController passController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   bool isLoading = false;
   
+  
+
+  void despose() {
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    nameController.dispose();
+  }
+
   void signUpUser() async {
     String res = await AuthenServ().signUpUser(
       email: emailController.text,
-      password: passController.text,
+      password: passwordController.text,
       name: nameController.text,
     );
     if(res == "Success!"){ 
@@ -71,7 +80,7 @@ class _SignupPageState extends State<SignupPage> {
                 icon: Icons.email,
               ),
               TextFieldIn(
-                textEditingController: passController,
+                textEditingController: passwordController,
                 hintText: "Enter your password",
                 isPass: true,
                 icon: Icons.lock,
