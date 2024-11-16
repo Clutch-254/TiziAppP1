@@ -6,22 +6,27 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(backgroundColor: Colors.black,
-      body: Center(
-        child: Column(
-          children: [
-            Text(
-              "Welcome back,\nYour wellness journey awaits.",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 25,
-                color: Colors.purple
-              ),
-            ),
-           
-          ],
+    return  Scaffold(backgroundColor: Colors.white,
+      body: Container(
+        margin: const EdgeInsets.only(
+          top: 50.0,
+          left: 20.0,
+          right: 10.0,
         ),
+      child: const Column(
+        children: [
+          Text(
+            "Hello, Max!",
+             style: TextStyle(
+              color: Colors.black,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Poppins',
+            ),
+          ),
+        ],
       ),
-    );
+    ),
+  );
   }
 }

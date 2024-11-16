@@ -58,7 +58,7 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SizedBox(
           child: Column(
@@ -96,7 +96,7 @@ class _SignupPageState extends State<SignupPage> {
                     "Already have an account?", 
                     style: TextStyle(
                       fontSize: 16,
-                      color: Colors.purple,
+                      color: Colors.black,
                     ),
                   ),
                   GestureDetector(
@@ -113,7 +113,7 @@ class _SignupPageState extends State<SignupPage> {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
-                      color: Colors.purple,
+                      color: Color.fromARGB(255, 94, 92, 92),
                       ),
                     ),
                   ),

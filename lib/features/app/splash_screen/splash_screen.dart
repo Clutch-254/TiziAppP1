@@ -24,12 +24,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: Center(
         child: Text(
           "Tizi, your fitness and wellness app!",
           style: TextStyle(
-            color: Colors.purple,
+            color: Color.fromARGB(255, 75, 73, 73),
             fontWeight: FontWeight.bold,
           ),
         ),

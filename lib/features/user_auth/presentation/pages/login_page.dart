@@ -56,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SizedBox(
           child: Column(
@@ -87,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
-                    color: Colors.purple,
+                    color: Color.fromARGB(255, 77, 75, 75),
                   ),
                  ),
                 ),
@@ -103,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                     "Don't have an account?", 
                     style: TextStyle(
                       fontSize: 16,
-                      color: Colors.purple,
+                      color: Colors.black,
                     ),
                   ),
                   GestureDetector(
@@ -120,7 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
-                      color: Colors.purple,
+                      color: Color.fromARGB(255, 97, 95, 95),
                       ),
                     ),
                   ),

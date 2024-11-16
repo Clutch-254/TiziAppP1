@@ -23,7 +23,7 @@ class ThisButton extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
             ),
-            color: Colors.purple,
+            color: Colors.grey,
           ),
           child: Text(
             text,
